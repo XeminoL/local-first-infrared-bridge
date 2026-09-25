@@ -1,6 +1,6 @@
 An ESP32 infrared bridge for Home Assistant that works without the internet.
 
-It learns codes from your remotes and sends them back, so a TV, air conditioner, fan or anything else with an IR remote can be controlled from Home Assistant. If a command does not go out, Home Assistant tells you.
+It learns codes from your remotes and sends them back, so a TV, air conditioner, fan or anything else with an IR remote can be controlled from Home Assistant.
 
 (For this project, i use air condintioner brand Daikin as an example.)
 
