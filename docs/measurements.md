@@ -1,8 +1,6 @@
 # How it was tested
 
-Everything was tested with one ESP32, one IR receiver, one IR transmitter and a laptop running Home Assistant and ESPHome. The receiver listens to the bridge's own LED, so every command sent can be checked. Results are compared against things I did not write: captures from real remotes and an independent IR library.
-
-Test scripts are in `measure/`, results in `measure/results/`.
+Everything was tested with one ESP32, one IR receiver, one IR transmitter and a laptop running Home Assistant and ESPHome. The receiver listens to the bridge's own LED, so every command sent can be checked.
 
 ## What was checked
 
