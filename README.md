@@ -38,5 +38,3 @@ It learns codes from your remotes and sends them back, so a TV, air conditioner,
 The ESP32 only connects to 2.4 GHz WiFi.
 
 ![Home Assistant alert for a lost command](docs/media/not-confirmed-alert.png)
-
-How it was tested: [docs/measurements.md](docs/measurements.md). Test scripts are in `measure/`.
