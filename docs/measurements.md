@@ -16,9 +16,9 @@ Everything was tested with one ESP32, one IR receiver, one IR transmitter and a 
 
 ## Fixes found while testing
 
-The ESPHome air conditioner component had two problems: what it sent was not recognised by an independent decoder, and it missed codes the receiver had actually heard. Both are fixed in `firmware/components/`.
+The ESPHome air conditioner component had two problems: what it sent was not recognised by an independent decoder, and it missed codes the receiver had actually heard.
 
-Without the alert automation, Home Assistant takes a long time to notice the ESP32 is gone, and commands sent in that time are lost without any error. The automation in `homeassistant/ir_command_confirmation.yaml` covers that gap.
+Without the alert automation, Home Assistant takes a long time to notice the ESP32 is gone, and commands sent in that time are lost without any error.
 
 ## Not covered
 
