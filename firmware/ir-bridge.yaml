@@ -1,0 +1,126 @@
+substitutions:
+  receiver_pin: GPIO27
+  transmitter_pin: GPIO4
+  test_code_address: "0x1234"
+  test_code_command: "0x78AB"
+  daikin_state_frame_min_timings: "300"
+  daikin_state_frame_max_timings: "320"
+  daikin_header_mark_min_us: "2500"
+
+esphome:
+  name: ir-bridge
+  friendly_name: IR Bridge
+
+esp32:
+  variant: esp32
+  flash_size: 4MB
+  framework:
+    type: esp-idf
+
+external_components:
+  - source:
+      type: local
+      path: components
+    components: [daikin]
+
+logger:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  power_save_mode: none
+  ap:
+    ssid: IR Bridge Fallback Hotspot
+    password: !secret fallback_ap_password
+
+captive_portal:
+
+api:
+  encryption:
+    key: !secret api_encryption_key
+  actions:
+    - action: send_raw
+      variables:
+        timings: int[]
+      then:
+        - remote_transmitter.transmit_raw:
+            code: !lambda "return timings;"
+            carrier_frequency: 38kHz
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+remote_receiver:
+  id: ir_rx
+  pin:
+    number: ${receiver_pin}
+    inverted: true
+    mode:
+      input: true
+      pullup: true
+  dump: all
+  on_raw:
+    then:
+      - if:
+          condition:
+            lambda: |-
+              return x.size() >= ${daikin_state_frame_min_timings}
+                  && x.size() <= ${daikin_state_frame_max_timings}
+                  && x[0] > ${daikin_header_mark_min_us};
+          then:
+            - event.trigger:
+                id: ir_echo
+                event_type: daikin_frame
+  on_nec:
+    then:
+      - if:
+          condition:
+            lambda: "return x.address == ${test_code_address} && x.command == ${test_code_command};"
+          then:
+            - event.trigger:
+                id: ir_received
+                event_type: correct
+          else:
+            - event.trigger:
+                id: ir_received
+                event_type: wrong
+
+remote_transmitter:
+  pin: ${transmitter_pin}
+  carrier_duty_percent: 50%
+  non_blocking: true
+
+climate:
+  - platform: daikin
+    name: Daikin Remote
+    id: daikin_remote
+  - platform: daikin
+    name: Virtual Daikin
+    id: virtual_daikin
+    receiver_id: ir_rx
+    visual:
+      temperature_step:
+        target_temperature: 0.5
+        current_temperature: 0.5
+
+button:
+  - platform: template
+    name: Send test code
+    on_press:
+      - remote_transmitter.transmit_nec:
+          address: ${test_code_address}
+          command: ${test_code_command}
+
+event:
+  - platform: template
+    name: IR received
+    id: ir_received
+    event_types:
+      - correct
+      - wrong
+  - platform: template
+    name: IR echo
+    id: ir_echo
+    event_types:
+      - daikin_frame

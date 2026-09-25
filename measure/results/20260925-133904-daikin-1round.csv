@@ -1,0 +1,56 @@
+step,field,value,outcome,latency_ms,seen
+1,temperature,25,match,636.2,"{'hvac_mode': 'cool', 'temperature': 25, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+2,temperature,26,match,616.0,"{'hvac_mode': 'cool', 'temperature': 26, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+3,temperature,27,match,631.4,"{'hvac_mode': 'cool', 'temperature': 27, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+4,temperature,28,missed,,
+5,temperature,29,match,675.3,"{'hvac_mode': 'cool', 'temperature': 29, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+6,temperature,30,missed,,
+7,temperature,29,missed,,
+8,temperature,28,missed,,
+9,temperature,27,match,676.2,"{'hvac_mode': 'cool', 'temperature': 27, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+10,temperature,26,match,625.9,"{'hvac_mode': 'cool', 'temperature': 26, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+11,temperature,25,match,605.3,"{'hvac_mode': 'cool', 'temperature': 25, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+12,temperature,24,missed,,
+13,temperature,23,missed,,
+14,temperature,22,missed,,
+15,temperature,21,missed,,
+16,temperature,20,missed,,
+17,temperature,19,missed,,
+18,temperature,18,missed,,
+19,temperature,17,missed,,
+20,temperature,16,match,651.5,"{'hvac_mode': 'cool', 'temperature': 16, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+21,temperature,15,missed,,
+22,temperature,14,missed,,
+23,temperature,13,missed,,
+24,temperature,12,match,661.3,"{'hvac_mode': 'cool', 'temperature': 12, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+25,temperature,11,missed,,
+26,temperature,10,missed,,
+27,temperature,11,match,603.5,"{'hvac_mode': 'cool', 'temperature': 11, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+28,temperature,12,missed,,
+29,temperature,13,match,624.5,"{'hvac_mode': 'cool', 'temperature': 13, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+30,temperature,14,missed,,
+31,temperature,15,match,624.9,"{'hvac_mode': 'cool', 'temperature': 15, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+32,temperature,16,missed,,
+33,temperature,17,match,622.5,"{'hvac_mode': 'cool', 'temperature': 17, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+34,temperature,18,match,645.4,"{'hvac_mode': 'cool', 'temperature': 18, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+35,temperature,19,match,789.8,"{'hvac_mode': 'cool', 'temperature': 19, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+36,temperature,20,missed,,
+37,temperature,21,match,615.5,"{'hvac_mode': 'cool', 'temperature': 21, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+38,temperature,22,missed,,
+39,temperature,23,missed,,
+40,temperature,24,missed,,
+41,hvac_mode,heat,match,649.0,"{'hvac_mode': 'heat', 'temperature': 24, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+42,hvac_mode,heat_cool,match,639.9,"{'hvac_mode': 'heat_cool', 'temperature': 24, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+43,hvac_mode,dry,missed,,
+44,hvac_mode,fan_only,match,608.7,"{'hvac_mode': 'fan_only', 'temperature': 24, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+45,hvac_mode,off,match,615.7,"{'hvac_mode': 'off', 'temperature': 24, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+46,hvac_mode,cool,match,615.2,"{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+47,fan_mode,quiet,missed,,
+48,fan_mode,low,missed,,
+49,fan_mode,medium,match,698.4,"{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'medium', 'swing_mode': 'off'}"
+50,fan_mode,high,match,638.8,"{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'high', 'swing_mode': 'off'}"
+51,fan_mode,auto,missed,,
+52,swing_mode,vertical,match,617.3,"{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'auto', 'swing_mode': 'vertical'}"
+53,swing_mode,horizontal,missed,,
+54,swing_mode,both,missed,,
+55,swing_mode,off,missed,,

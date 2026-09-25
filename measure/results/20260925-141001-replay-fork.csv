@@ -1,0 +1,72 @@
+file,signal,outcome,expected,seen
+Daikin_AC_unknownModel.ir,Cool_25_slow,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 25.0}","{'hvac_mode': 'cool', 'temperature': 25, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_AC_unknownModel.ir,Off,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 25, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_AC_unknownModel.ir,Auto_25_slow,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 25.0}","{'hvac_mode': 'heat_cool', 'temperature': 25, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_AC_unknownModel.ir,Auto_25_auto,match,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 25.0}","{'hvac_mode': 'heat_cool', 'temperature': 25, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,OFF,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 25, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,COOL,wrong,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}","{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,HEAT,match,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'heat', 'temperature': 25.0}","{'hvac_mode': 'heat', 'temperature': 25, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,DRY,match,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'dry'}","{'hvac_mode': 'dry', 'temperature': 25, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,AUTO,match,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 25.0}","{'hvac_mode': 'heat_cool', 'temperature': 25, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,FAN_ONLY,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'fan_only'}","{'hvac_mode': 'fan_only', 'temperature': 25, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,TEMP+,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 24.0}","{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,TEMP-,missed,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A41.ir,POWERFUL,missed,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A41.ir,COMFORT,missed,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A41.ir,FAN,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 25.0}","{'hvac_mode': 'heat_cool', 'temperature': 25, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,SWING,wrong,"{'fan_mode': 'low', 'swing_mode': 'vertical', 'hvac_mode': 'cool', 'temperature': 23.5}","{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'low', 'swing_mode': 'vertical'}"
+Daikin_ARC480A41.ir,QUIET,wrong,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}","{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,SLEEP,wrong,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}","{'hvac_mode': 'cool', 'temperature': 24, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+Daikin_ARC480A41.ir,ECONOMY,missed,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A41.ir,MOLD PROOF,missed,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A41.ir,TIMER ON,missed,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A41.ir,TIMER OFF,missed,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A41.ir,TIMER CANCEL,missed,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 23.5}",
+Daikin_ARC480A53.ir,Off,match,"{'fan_mode': 'high', 'swing_mode': 'both', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 24, 'fan_mode': 'high', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,AUTO,match,"{'fan_mode': 'high', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 25.0}","{'hvac_mode': 'heat_cool', 'temperature': 25, 'fan_mode': 'high', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,COOL,wrong,"{'fan_mode': 'high', 'swing_mode': 'both', 'hvac_mode': 'cool', 'temperature': 18.5}","{'hvac_mode': 'cool', 'temperature': 18, 'fan_mode': 'high', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,DRY,match,"{'fan_mode': 'auto', 'swing_mode': 'both', 'hvac_mode': 'dry'}","{'hvac_mode': 'dry', 'temperature': 18, 'fan_mode': 'auto', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,HEAT,match,"{'fan_mode': 'high', 'swing_mode': 'both', 'hvac_mode': 'heat', 'temperature': 22.0}","{'hvac_mode': 'heat', 'temperature': 22, 'fan_mode': 'high', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,FAN_ONLY,match,"{'fan_mode': 'high', 'swing_mode': 'both', 'hvac_mode': 'fan_only'}","{'hvac_mode': 'fan_only', 'temperature': 22, 'fan_mode': 'high', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,TEMP+,wrong,"{'fan_mode': 'high', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 25.5}","{'hvac_mode': 'heat_cool', 'temperature': 26, 'fan_mode': 'high', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,TEMP-,missed,"{'fan_mode': 'high', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 25.5}",
+Daikin_ARC480A53.ir,FAN,wrong,"{'fan_mode': 'auto', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 25.5}","{'hvac_mode': 'heat_cool', 'temperature': 26, 'fan_mode': 'auto', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,ECONOMY,missed,"{'fan_mode': 'auto', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 25.5}",
+Daikin_ARC480A53.ir,COMFORT,wrong,"{'fan_mode': 'auto', 'swing_mode': 'horizontal', 'hvac_mode': 'heat_cool', 'temperature': 25.5}","{'hvac_mode': 'heat_cool', 'temperature': 26, 'fan_mode': 'auto', 'swing_mode': 'horizontal'}"
+Daikin_ARC480A53.ir,POWERFUL,missed,"{'fan_mode': 'auto', 'swing_mode': 'horizontal', 'hvac_mode': 'heat_cool', 'temperature': 25.5}",
+Daikin_ARC480A53.ir,SWING_VERTICAL,wrong,"{'fan_mode': 'auto', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 25.5}","{'hvac_mode': 'heat_cool', 'temperature': 26, 'fan_mode': 'auto', 'swing_mode': 'both'}"
+Daikin_ARC480A53.ir,SWING_HORIZONTAL,wrong,"{'fan_mode': 'auto', 'swing_mode': 'vertical', 'hvac_mode': 'heat_cool', 'temperature': 25.5}","{'hvac_mode': 'heat_cool', 'temperature': 26, 'fan_mode': 'auto', 'swing_mode': 'vertical'}"
+Daikin_ARC480A53.ir,TIMER_ON,missed,"{'fan_mode': 'auto', 'swing_mode': 'vertical', 'hvac_mode': 'heat_cool', 'temperature': 25.5}",
+Daikin_ARC480A53.ir,TIMER_OFF,missed,"{'fan_mode': 'auto', 'swing_mode': 'vertical', 'hvac_mode': 'heat_cool', 'temperature': 25.5}",
+Daikin_ARC480A53.ir,TIMER_CANCEL,missed,"{'fan_mode': 'auto', 'swing_mode': 'vertical', 'hvac_mode': 'heat_cool', 'temperature': 25.5}",
+Daikin_FTX50GV1B.ir,Power,match,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 26.0}","{'hvac_mode': 'cool', 'temperature': 26, 'fan_mode': 'high', 'swing_mode': 'off'}"
+Daikin_FTX50GV1B.ir,Temp_up,match,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 26, 'fan_mode': 'high', 'swing_mode': 'off'}"
+Daikin_FTX50GV1B.ir,Temp_down,match,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'high', 'swing_mode': 'off'}"
+Daikin_FTX50GV1B.ir,Fan,match,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'high', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,Power,match,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,Fan,match,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,Powerful,match,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,Temp+,match,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 19.0}","{'hvac_mode': 'heat_cool', 'temperature': 19, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,Temp-,match,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 19, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,Mode,match,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 19, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,Econo,match,"{'fan_mode': 'quiet', 'swing_mode': 'vertical', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 19, 'fan_mode': 'quiet', 'swing_mode': 'vertical'}"
+Daikin_FTXM95PVMA.ir,Quiet,match,"{'fan_mode': 'quiet', 'swing_mode': 'vertical', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'quiet', 'swing_mode': 'vertical'}"
+Daikin_FTXM95PVMA.ir,ShortSwing,match,"{'fan_mode': 'quiet', 'swing_mode': 'off', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'quiet', 'swing_mode': 'off'}"
+Daikin_FTXM95PVMA.ir,WideSwing,match,"{'fan_mode': 'quiet', 'swing_mode': 'horizontal', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'quiet', 'swing_mode': 'horizontal'}"
+Daikin_FTXM95PVMA.ir,Comfort,match,"{'fan_mode': 'auto', 'swing_mode': 'horizontal', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'auto', 'swing_mode': 'horizontal'}"
+Daikin_FTXM95PVMA.ir,Sensor,match,"{'fan_mode': 'quiet', 'swing_mode': 'horizontal', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'quiet', 'swing_mode': 'horizontal'}"
+Daikin_FTXM95PVMA.ir,Cancel,match,"{'fan_mode': 'quiet', 'swing_mode': 'horizontal', 'hvac_mode': 'off'}","{'hvac_mode': 'off', 'temperature': 10, 'fan_mode': 'quiet', 'swing_mode': 'horizontal'}"
+Daikin_FTXM95PVMA.ir,Off?,match,"{'fan_mode': 'quiet', 'swing_mode': 'horizontal', 'hvac_mode': 'cool', 'temperature': 25.0}","{'hvac_mode': 'cool', 'temperature': 25, 'fan_mode': 'quiet', 'swing_mode': 'horizontal'}"
+Daikin_FTXS25KVMA.ir,Power,match,"{'fan_mode': 'auto', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+Daikin_FTXS25KVMA.ir,Fan,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_FTXS25KVMA.ir,Powerful,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_FTXS25KVMA.ir,Temp+,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 19.0}","{'hvac_mode': 'heat_cool', 'temperature': 19, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_FTXS25KVMA.ir,Temp-,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_FTXS25KVMA.ir,Cancel,match,"{'fan_mode': 'low', 'swing_mode': 'off', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'low', 'swing_mode': 'off'}"
+Daikin_FTXS25KVMA.ir,SwingWide,match,"{'fan_mode': 'low', 'swing_mode': 'horizontal', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'low', 'swing_mode': 'horizontal'}"
+Daikin_FTXS25KVMA.ir,SwingNarrow,match,"{'fan_mode': 'low', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'low', 'swing_mode': 'both'}"
+Daikin_FTXS25KVMA.ir,Quiet,match,"{'fan_mode': 'low', 'swing_mode': 'both', 'hvac_mode': 'heat_cool', 'temperature': 18.0}","{'hvac_mode': 'heat_cool', 'temperature': 18, 'fan_mode': 'low', 'swing_mode': 'both'}"
+Daikin_FTXS25KVMA.ir,Mode,match,"{'fan_mode': 'auto', 'swing_mode': 'both', 'hvac_mode': 'dry'}","{'hvac_mode': 'dry', 'temperature': 18, 'fan_mode': 'auto', 'swing_mode': 'both'}"
+Daikin_FTXS25KVMA.ir,Sensor,match,"{'fan_mode': 'auto', 'swing_mode': 'horizontal', 'hvac_mode': 'dry'}","{'hvac_mode': 'dry', 'temperature': 18, 'fan_mode': 'auto', 'swing_mode': 'horizontal'}"
+Daikin_FTXS25KVMA.ir,Comfort,match,"{'fan_mode': 'auto', 'swing_mode': 'horizontal', 'hvac_mode': 'dry'}","{'hvac_mode': 'dry', 'temperature': 10, 'fan_mode': 'auto', 'swing_mode': 'horizontal'}"
+Daikin_FTXS25KVMA.ir,Off?,match,"{'fan_mode': 'auto', 'swing_mode': 'horizontal', 'hvac_mode': 'dry'}","{'hvac_mode': 'dry', 'temperature': 10, 'fan_mode': 'auto', 'swing_mode': 'horizontal'}"

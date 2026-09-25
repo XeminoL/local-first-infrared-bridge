@@ -1,0 +1,5 @@
+file,signal,outcome,expected,seen
+Daikin_FTX50GV1B.ir,Power,missed,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'cool', 'temperature': 26.0}",
+Daikin_FTX50GV1B.ir,Temp_up,missed,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'off'}",
+Daikin_FTX50GV1B.ir,Temp_down,missed,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'off'}",
+Daikin_FTX50GV1B.ir,Fan,missed,"{'fan_mode': 'high', 'swing_mode': 'off', 'hvac_mode': 'off'}",

@@ -1,0 +1,28 @@
+alias: IR command confirmation
+description: Warn when an IR command to the air conditioner is not heard back within 2 seconds
+mode: queued
+triggers:
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: climate
+conditions:
+  - condition: template
+    value_template: "{{ 'climate.ir_bridge_daikin_remote' in (trigger.event.data.service_data.entity_id | string) }}"
+actions:
+  - wait_for_trigger:
+      - trigger: state
+        entity_id: event.ir_bridge_ir_echo
+    timeout: "00:00:02"
+    continue_on_timeout: true
+  - if:
+      - condition: template
+        value_template: "{{ wait.trigger is none }}"
+    then:
+      - event: ir_bridge_unconfirmed
+        event_data:
+          service: "{{ trigger.event.data.service }}"
+      - action: persistent_notification.create
+        data:
+          title: IR command not confirmed
+          message: "No IR echo within 2 s after {{ trigger.event.data.service }} at {{ now().strftime('%H:%M:%S') }}. The IR Bridge may be offline."

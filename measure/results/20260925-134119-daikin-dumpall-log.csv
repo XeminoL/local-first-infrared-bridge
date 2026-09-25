@@ -1,0 +1,21 @@
+step,field,value,outcome,latency_ms,seen
+1,temperature,25,match,619.6,"{'hvac_mode': 'cool', 'temperature': 25, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+2,temperature,26,missed,,
+3,temperature,27,missed,,
+4,temperature,28,missed,,
+5,temperature,29,missed,,
+6,temperature,30,missed,,
+7,temperature,29,missed,,
+8,temperature,28,match,659.2,"{'hvac_mode': 'cool', 'temperature': 28, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+9,temperature,27,missed,,
+10,temperature,26,missed,,
+11,temperature,25,missed,,
+12,temperature,24,missed,,
+13,temperature,23,missed,,
+14,temperature,22,match,618.0,"{'hvac_mode': 'cool', 'temperature': 22, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+15,temperature,21,match,626.6,"{'hvac_mode': 'cool', 'temperature': 21, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+16,temperature,20,match,629.3,"{'hvac_mode': 'cool', 'temperature': 20, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+17,temperature,19,missed,,
+18,temperature,18,match,609.3,"{'hvac_mode': 'cool', 'temperature': 18, 'fan_mode': 'auto', 'swing_mode': 'off'}"
+19,temperature,17,missed,,
+20,temperature,16,match,619.9,"{'hvac_mode': 'cool', 'temperature': 16, 'fan_mode': 'auto', 'swing_mode': 'off'}"

@@ -1,0 +1,35 @@
+== check before: internet must be unreachable
+internet unreachable at 14:31:40
+esp32 reachable: True
+== loopback (NEC button, 100 presses)
+  81/100  correct    97.7 ms
+  82/100  correct   135.8 ms
+  83/100  correct   124.3 ms
+  84/100  correct   103.5 ms
+  85/100  correct   137.9 ms
+  86/100  correct   111.5 ms
+  87/100  correct   101.7 ms
+  88/100  correct    96.3 ms
+  89/100  correct   109.7 ms
+  90/100  correct   105.2 ms
+  91/100  correct   128.9 ms
+  92/100  correct   107.3 ms
+  93/100  missed        -
+  94/100  missed        -
+  95/100  missed        -
+  96/100  missed        -
+  97/100  missed        -
+  98/100  missed        -
+  99/100  missed        -
+ 100/100  missed        -
+
+trials   100
+correct  92  (92.0%)
+wrong    0
+missed   8
+latency  median 113.5 ms, p90 137.8 ms, min 96.3 ms, max 1107.9 ms
+saved    results/20260925-143300-offline-loopback.csv
+== climate sweep (Daikin, 1 round)
+
+>> $global:?
+True

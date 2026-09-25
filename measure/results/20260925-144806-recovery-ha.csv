@@ -1,0 +1,5 @@
+t_s,phase,entity_state,call_accepted,ir_ok,error
+9.75,restarting,no-connection,False,False,ClientConnectorError
+10.8,restarting,missing,False,False,"Home Assistant rejected call_service: {'code': 'not_found', 'message': 'Service "
+11.83,restarting,missing,False,False,"Home Assistant rejected call_service: {'code': 'not_found', 'message': 'Service "
+12.83,restarting,2026-09-25T07:46:49.284177+00:00,True,True,

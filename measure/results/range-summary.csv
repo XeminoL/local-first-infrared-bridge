@@ -1,0 +1,3 @@
+time,distance_cm,setup,nec_ok,nec_total,nec_median_ms,daikin_ok,daikin_total,daikin_median_ms,note
+15:54:46,0,covered,30,30,99.5,10,10,616.3,"no mirror, facing room"
+15:58:10,0,covered,0,30,,0,10,,"no mirror, book between boards"

@@ -1,0 +1,8 @@
+TEST_BUTTON = "button.ir_bridge_send_test_code"
+TEST_CODE_EVENT = "event.ir_bridge_ir_received"
+ECHO_EVENT = "event.ir_bridge_ir_echo"
+REMOTE_CLIMATE = "climate.ir_bridge_daikin_remote"
+VIRTUAL_CLIMATE = "climate.ir_bridge_virtual_daikin"
+SEND_RAW_DOMAIN = "esphome"
+SEND_RAW_SERVICE = "ir_bridge_send_raw"
+UNCONFIRMED_EVENT_TYPE = "ir_bridge_unconfirmed"

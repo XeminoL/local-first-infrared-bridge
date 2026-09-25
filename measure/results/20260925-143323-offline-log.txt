@@ -1,0 +1,36 @@
+== check before: internet must be unreachable
+internet unreachable at 14:33:41
+esp32 reachable: True
+== loopback (NEC button, 100 presses)
+  81/100  correct   126.3 ms
+  82/100  correct   129.3 ms
+  83/100  correct   108.7 ms
+  84/100  correct   137.0 ms
+  85/100  correct   136.6 ms
+  86/100  correct   113.1 ms
+  87/100  correct   173.7 ms
+  88/100  correct   164.2 ms
+  89/100  correct   104.8 ms
+  90/100  correct   291.4 ms
+  91/100  correct   127.7 ms
+  92/100  correct   153.3 ms
+  93/100  correct   140.2 ms
+  94/100  correct   120.5 ms
+  95/100  correct   107.3 ms
+  96/100  correct   134.4 ms
+  97/100  correct   200.7 ms
+  98/100  correct   111.6 ms
+  99/100  correct   113.9 ms
+ 100/100  correct   113.9 ms
+
+trials   100
+correct  100  (100.0%)
+wrong    0
+missed   0
+latency  median 113.5 ms, p90 153.3 ms, min 99.9 ms, max 291.4 ms
+saved    results/20260925-143445-offline-loopback.csv
+== climate sweep (Daikin, 1 round)
+
+== check after: internet must still be unreachable
+internet reachable after: False at 14:36:31
+DONE. Turn mobile data back on.
