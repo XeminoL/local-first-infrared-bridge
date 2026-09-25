@@ -2,6 +2,8 @@ An ESP32 infrared bridge for Home Assistant that works without the internet.
 
 It learns codes from your remotes and sends them back, so a TV, air conditioner, fan or anything else with an IR remote can be controlled from Home Assistant. If a command does not go out, Home Assistant tells you.
 
+(For this project, i use air condintioner brand Daikin as an example.)
+
 ![Home Assistant controlling a device through the bridge](docs/media/demo.gif)
 
 ## Hardware
@@ -38,7 +40,3 @@ The ESP32 only connects to 2.4 GHz WiFi.
 ![Home Assistant alert for a lost command](docs/media/not-confirmed-alert.png)
 
 How it was tested: [docs/measurements.md](docs/measurements.md). Test scripts are in `measure/`.
-
-## License
-
-GPLv3, see `LICENSE`. `firmware/components/` is derived from ESPHome (GPLv3). Remote captures in `measure/irdb/` come from Flipper-IRDB (CC0).
