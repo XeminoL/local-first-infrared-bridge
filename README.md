@@ -23,7 +23,6 @@ It learns codes from your remotes and sends them back, so a TV, air conditioner,
 
 - Learns any IR code it hears and shows it in Home Assistant.
 - Sends saved or raw IR codes.
-- Controls an air conditioner as a normal climate entity.
 - Checks every command it sends and raises an alert if one is lost.
 - Runs entirely on the local network.
 
