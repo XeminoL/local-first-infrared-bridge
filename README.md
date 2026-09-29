@@ -2,8 +2,6 @@ An ESP32 infrared bridge for Home Assistant that works without the internet.
 
 It learns codes from your remotes and sends them back, so a TV, air conditioner, fan or anything else with an IR remote can be controlled from Home Assistant, or from the bridge's own web page when Home Assistant is off.
 
-(For this project I used it on the TV and the Panasonic air conditioner at home.)
-
 ![Home Assistant controlling a device through the bridge](docs/media/demo.gif)
 
 ## Hardware
