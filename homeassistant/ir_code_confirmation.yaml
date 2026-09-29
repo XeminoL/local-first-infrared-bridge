@@ -1,0 +1,30 @@
+alias: IR learned code confirmation
+description: Warn when a learned IR code is not heard back from the bridge's own LED
+mode: queued
+triggers:
+  - trigger: event
+    event_type: call_service
+    event_data:
+      domain: esphome
+      service: ir_bridge_send_code
+actions:
+  - wait_for_trigger:
+      - trigger: state
+        entity_id: event.ir_bridge_code_echo
+    timeout: "00:00:03"
+    continue_on_timeout: true
+  - if:
+      - condition: template
+        value_template: >-
+          {{ wait.trigger is none or wait.trigger.to_state.attributes.event_type != 'confirmed' }}
+    then:
+      - event: ir_bridge_unconfirmed
+        event_data:
+          code: "{{ trigger.event.data.service_data.name }}"
+      - action: persistent_notification.create
+        data:
+          title: IR code not confirmed
+          message: >-
+            {{ trigger.event.data.service_data.name }} at {{ now().strftime('%H:%M:%S') }}:
+            {{ 'no answer from the IR Bridge, it may be offline' if wait.trigger is none
+               else 'the echo did not match what was sent' }}.

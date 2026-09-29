@@ -65,6 +65,11 @@ class HomeAssistant:
             payload["target"] = {"entity_id": entity_id}
         await self.request(payload)
 
+    async def call_for_response(self, domain, service, **data):
+        payload = {"type": "call_service", "domain": domain, "service": service, "service_data": data,
+                   "return_response": True}
+        return (await self.request(payload) or {}).get("response") or {}
+
     async def services(self, domain):
         return (await self.request({"type": "get_services"})).get(domain, {})
 

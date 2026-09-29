@@ -6,9 +6,8 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-WSL_DISTRO = "Ubuntu"
-DECODER = "~/irremote/tools/mode2_decode_long"
-MESSAGE_SEPARATOR_US = 65535
+from irremote import WSL_DISTRO, decode
+
 FORK_DIR = Path(__file__).resolve().parent.parent / "firmware" / "components" / "daikin"
 UPSTREAM_DIR = "/esphome/esphome/components/daikin"
 ESPHOME_CONTAINER = "esphome"
@@ -103,30 +102,6 @@ class Protocol:
         yield "off", 25, "auto", "off"
 
 
-def to_mode2(messages):
-    lines = [f"space {MESSAGE_SEPARATOR_US}"]
-    for timings in messages:
-        lines.extend(("pulse " if index % 2 == 0 else "space ") + str(value) for index, value in enumerate(timings))
-        lines.append(f"space {MESSAGE_SEPARATOR_US}")
-    return "\n".join(lines) + "\n"
-
-
-def run_decoder(messages):
-    result = subprocess.run(["wsl", "-d", WSL_DISTRO, "--", "sh", "-c", DECODER],
-                            input=to_mode2(messages), capture_output=True, text=True)
-    if result.returncode != 0:
-        sys.exit(f"decoder failed: {result.stderr.strip()}")
-    decoded = []
-    for block in result.stdout.split("Code length")[1:]:
-        kind = re.search(r"Code type\s+-?\d+ \((\w+)\)", block)
-        state = re.search(r"State value\s+0x([0-9A-F]+)", block)
-        desc = re.search(r"Mesg Desc\.\s+(.*)", block)
-        decoded.append((kind.group(1) if kind else "?",
-                        bytes.fromhex(state.group(1)) if state else b"",
-                        desc.group(1) if desc else ""))
-    return decoded
-
-
 def expected_fields(mode, temperature, fan, swing):
     fields = {
         "Power": "Off" if mode == "off" else "On",
@@ -160,22 +135,22 @@ def main():
     protocol = Protocol(*read_source(args.source))
     all_cases = list(protocol.cases())
     states = [protocol.state(*case) for case in all_cases]
-    decoded = run_decoder([protocol.timings(state) for state in states])
+    decoded = decode([protocol.timings(state) for state in states])
     if len(decoded) != len(all_cases):
         sys.exit(f"decoder returned {len(decoded)} results for {len(all_cases)} messages")
 
     outcome = Counter()
     failures = []
-    for case, state, (kind, got_state, desc) in zip(all_cases, states, decoded):
-        if kind != "DAIKIN":
+    for case, state, result in zip(all_cases, states, decoded):
+        if result.kind != "DAIKIN":
             outcome["not recognised as DAIKIN"] += 1
-            failures.append((case, f"type {kind}"))
+            failures.append((case, f"type {result.kind}"))
             continue
-        if got_state != state:
+        if result.state != state:
             outcome["bytes differ"] += 1
-            failures.append((case, f"bytes {got_state.hex()}"))
+            failures.append((case, f"bytes {result.state.hex()}"))
             continue
-        got = parse_desc(desc)
+        got = parse_desc(result.description)
         wrong = {key: (value, got.get(key)) for key, value in expected_fields(*case).items() if got.get(key) != value}
         if wrong:
             outcome["meaning differs"] += 1

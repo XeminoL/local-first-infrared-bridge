@@ -6,6 +6,7 @@ substitutions:
   daikin_state_frame_min_timings: "300"
   daikin_state_frame_max_timings: "320"
   daikin_header_mark_min_us: "2500"
+  code_name_max_length: "23"
 
 esphome:
   name: ir-bridge
@@ -21,9 +22,12 @@ external_components:
   - source:
       type: local
       path: components
-    components: [daikin]
+    components: [daikin, ir_learner, panasonic_ac]
 
 logger:
+
+debug:
+  update_interval: 30s
 
 wifi:
   ssid: !secret wifi_ssid
@@ -34,6 +38,15 @@ wifi:
     password: !secret fallback_ap_password
 
 captive_portal:
+
+web_server:
+  port: 80
+  version: 3
+  local: true
+  auth:
+    type: digest
+    username: admin
+    password: !secret web_password
 
 api:
   encryption:
@@ -46,6 +59,41 @@ api:
         - remote_transmitter.transmit_raw:
             code: !lambda "return timings;"
             carrier_frequency: 38kHz
+    - action: learn_code
+      variables:
+        name: string
+      then:
+        - lambda: "id(learner).learn(name);"
+    - action: send_code
+      variables:
+        name: string
+      then:
+        - lambda: "id(learner).send(name);"
+    - action: delete_code
+      variables:
+        name: string
+      then:
+        - lambda: "id(learner).forget(name);"
+    - action: calibrate_receiver
+      then:
+        - lambda: "id(learner).calibrate();"
+    - action: get_last_capture
+      then:
+        - api.respond:
+            data: !lambda |-
+              JsonArray timings = root["timings"].to<JsonArray>();
+              for (int32_t timing : id(learner).last_raw_capture())
+                timings.add(timing);
+    - action: get_code
+      variables:
+        name: string
+      then:
+        - api.respond:
+            data: !lambda |-
+              root["name"] = name;
+              JsonArray timings = root["timings"].to<JsonArray>();
+              for (int32_t timing : id(learner).signed_timings(name))
+                timings.add(timing);
 
 ota:
   - platform: esphome
@@ -56,6 +104,7 @@ remote_receiver:
   pin:
     number: ${receiver_pin}
     inverted: true
+    allow_other_uses: true
     mode:
       input: true
       pullup: true
@@ -87,9 +136,33 @@ remote_receiver:
                 event_type: wrong
 
 remote_transmitter:
+  id: ir_tx
   pin: ${transmitter_pin}
   carrier_duty_percent: 50%
   non_blocking: true
+
+ir_learner:
+  id: learner
+  transmitter_id: ir_tx
+  learn_timeout: 60s
+  pin:
+    number: ${receiver_pin}
+    inverted: true
+    allow_other_uses: true
+    mode:
+      input: true
+      pullup: true
+  on_status:
+    - text_sensor.template.publish:
+        id: learner_status
+        state: !lambda "return status;"
+    - text_sensor.template.publish:
+        id: saved_codes
+        state: !lambda "return id(learner).saved_names();"
+  on_echo:
+    - event.trigger:
+        id: code_echo
+        event_type: !lambda 'return confirmed ? "confirmed" : "not_confirmed";'
 
 climate:
   - platform: daikin
@@ -103,6 +176,19 @@ climate:
       temperature_step:
         target_temperature: 0.5
         current_temperature: 0.5
+  - platform: panasonic_ac
+    name: Panasonic AC
+    id: panasonic_climate
+    receiver_id: ir_rx
+
+text:
+  - platform: template
+    name: Code name
+    id: code_name
+    mode: text
+    optimistic: true
+    restore_value: true
+    max_length: ${code_name_max_length}
 
 button:
   - platform: template
@@ -111,6 +197,46 @@ button:
       - remote_transmitter.transmit_nec:
           address: ${test_code_address}
           command: ${test_code_command}
+  - platform: template
+    name: Learn code
+    on_press:
+      - lambda: "id(learner).learn(id(code_name).state);"
+  - platform: template
+    name: Send code
+    on_press:
+      - lambda: "id(learner).send(id(code_name).state);"
+  - platform: template
+    name: Delete code
+    on_press:
+      - lambda: "id(learner).forget(id(code_name).state);"
+  - platform: template
+    name: Calibrate receiver
+    entity_category: config
+    on_press:
+      - lambda: "id(learner).calibrate();"
+
+sensor:
+  - platform: debug
+    free:
+      name: Heap free
+    block:
+      name: Heap largest block
+  - platform: uptime
+    name: Uptime
+  - platform: wifi_signal
+    name: WiFi signal
+    update_interval: 30s
+
+text_sensor:
+  - platform: debug
+    reset_reason:
+      name: Reset reason
+  - platform: template
+    name: Learner status
+    id: learner_status
+  - platform: template
+    name: Saved codes
+    id: saved_codes
 
 event:
   - platform: template
@@ -124,3 +250,9 @@ event:
     id: ir_echo
     event_types:
       - daikin_frame
+  - platform: template
+    name: Code echo
+    id: code_echo
+    event_types:
+      - confirmed
+      - not_confirmed
