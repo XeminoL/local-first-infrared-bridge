@@ -41,6 +41,6 @@ To learn a code, type a name in `Code name`, press `Learn code` and press the bu
 ## Limits
 
 - The IR transmitter module is weak. The TV works from close by, the wall-mounted air conditioner only when the bridge is held near it.
-- The receiver fades out on codes that keep sending for more than about 300 ms, so very long codes (Hitachi 296-bit) do not learn cleanly.
+- The receiver fades out on codes that keep sending for more than about 300 ms, so very long codes do not learn cleanly.
 
 Test results are in [docs/measurements.md](docs/measurements.md).
